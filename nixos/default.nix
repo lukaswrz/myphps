@@ -6,8 +6,8 @@ phps: {
   cfg = config.programs.phps;
   inherit (lib) types;
 in {
-  options.services.phps = {
-    enable = lib.mkEnableOption "phps";
+  options.services.myphps = {
+    enable = lib.mkEnableOption "myphps";
     phps = lib.mkOption {
       description = ''
         PHPs to use.
