@@ -1,8 +1,14 @@
-phps: {
+self: {
   lib,
   config,
+  pkgs,
   ...
 }: let
+  phps = let
+    packages = self.packages.${pkgs.system};
+    filter = name: _: builtins.match "^php[[:digit:]]*$" name;
+  in
+    lib.filterAttrs filter packages;
   cfg = config.programs.phps;
   inherit (lib) types;
 in {
