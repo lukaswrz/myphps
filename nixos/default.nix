@@ -25,7 +25,7 @@ in {
       description = ''
         The prefix for every PHP installation.
       '';
-      default = "/var/lib/phps";
+      default = "/run/phps";
       type = types.str;
     };
   };
