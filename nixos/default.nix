@@ -31,10 +31,12 @@ in {
   };
 
   config = {
-    systemd.tmpfiles.settings =
-      builtins.mapAttrs (name: drv: {
-        "${cfg.prefix}/${name}"."L+".argument = drv.outPath;
+    systemd.tmpfiles.settings = lib.listToAttrs (lib.mapAttrsToList (name: drv: {
+        name = "myphps-${name}";
+        value = {
+          "${cfg.prefix}/${name}"."L+".argument = drv.outPath;
+        };
       })
-      phps;
+      phps);
   };
 }
